@@ -48,5 +48,11 @@
     <Compile Include="ToepassenDalLocal.cs" />
     <Compile Include="ToepassenDalSQL.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\modellen\modellen.csproj">
+      <Project>{4b9857e2-36a2-4024-8409-134e6c0f4cd8}</Project>
+      <Name>modellen</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
