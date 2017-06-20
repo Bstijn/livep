@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="OverzichtLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToepassenLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dal\Dal.csproj">
