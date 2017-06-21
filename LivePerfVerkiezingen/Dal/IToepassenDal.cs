@@ -16,5 +16,6 @@ namespace Dal
         Boolean UitslagAanpassen(int Uitslag_id, Uitslag aangepasteUitslag);
         void verwijderPartij(Partij partij);
         FileStyleUriParser maakExport(Uitslag uitslag);
+        bool PasPartijAan(Partij partij);
     }
 }

@@ -19,6 +19,11 @@ namespace Dal
             throw new NotImplementedException();
         }
 
+        public bool PasPartijAan(Partij partij)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SlaCoalitieOp(Coalitie coalitie)
         {
             throw new NotImplementedException();

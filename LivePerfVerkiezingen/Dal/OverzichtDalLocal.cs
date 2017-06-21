@@ -9,7 +9,17 @@ namespace Dal
 {
     public class OverzichtDalLocal : IOverzichtDal
     {
+        public List<Partij> geefAllePartijen()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Verkiezing> geefAlleVerkiezingen()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Partij> Partijenvan(Verkiezing verkiezing)
         {
             throw new NotImplementedException();
         }

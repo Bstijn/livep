@@ -11,6 +11,8 @@
 <ul>
     <li>@v.Naam</li>
     <li>uitslagen: @v.Uitslagen.Capacity</li>
-    <li><a href="">details</a></li>
+    <li>@Html.ActionLink("Details","UitslagenVerkiezing",new { id = v.Id })</li>
 </ul>
 }
+
+

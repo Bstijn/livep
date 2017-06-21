@@ -1,0 +1,33 @@
+﻿@using modellen
+@model Partij
+
+@{
+    ViewBag.Title = "PartijAanpassen";
+}
+
+<h2>Partij Aanpassen</h2>
+<form method="post">
+    <p>
+        <label for="naampartij">Naam Partij</label>
+        <input name="Naam" type="text" value="@Model.Naam" />
+    </p>
+    <p>
+        <label for="lijsttrekker">Lijsttrekker:</label>
+        <input name="Lijsttrekker" type="text" value="@Model.Lijsttrekker" />
+    </p>
+    <p style="visibility:hidden">
+       <label for="Id">Id:</label>
+        <input name="Id" type="number" value="@Model.Id" />
+     </p>
+    <p>
+        <label for="submit"></label>
+        <input name="submit" type="submit" value="Bevestig" />
+    </p>
+
+</form>
+@if (TempData["paanpassen"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>partij naam wijzigen kan niet want de naam is al in bezet</strong>
+    </div>
+}

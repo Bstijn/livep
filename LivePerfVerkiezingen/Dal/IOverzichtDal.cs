@@ -13,5 +13,7 @@ namespace Dal
         List<Verkiezing> geefAlleVerkiezingen();
         List<Uitslag> UitslagenVan(Verkiezing verkiezing);
         Uitslag UitslagDetails(string naam);
+        List<Partij> geefAllePartijen();
+        List<Partij> Partijenvan(Verkiezing verkiezing);
     }
 }

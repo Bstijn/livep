@@ -1,0 +1,35 @@
+﻿@using modellen
+@model Uitslag
+
+@{
+    ViewBag.Title = "NieuweUitslag";
+}
+
+<h2>NieuweUitslag</h2>
+<form method="post">
+    <p style="visibility:hidden">
+        <label for="verkiezing_id"></label>
+        <input type="number" name="Uitslag.Verkiezing.Id" value="@Model.verkiezing.Id" />
+    </p>
+    <p>
+        <label for="naam uitslag">naam</label>
+        <input type="text" name="Uitslag.Naam"/>
+    </p>
+    <p>
+        <label for="datum">Datum van uitslag</label>
+        <input type="date" name="Uitslag.Datum" />
+    </p>
+    <p>
+        <label for="totaalaantalstemmen">Totaal aantal stemmen</label>
+        <input type="number" name="Uitslag.TotaalStemmen" />
+    </p>
+    
+        @for (int i = 0; i < Model.verkiezing.Partijen.Count; i++)
+        {
+            <p>
+                <label for="Partij">@Model.verkiezing.Partijen[i].Naam @Model.verkiezing.Partijen[i].Lijsttrekker aantalstemmen:</label>
+                <input type="number" name="Uitslag.Verkiezing.Partijen[@i].Stemmen"/>
+            </p>
+        }
+    
+</form>

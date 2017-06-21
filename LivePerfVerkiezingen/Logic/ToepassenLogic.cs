@@ -15,5 +15,19 @@ namespace Logic
         {
             this.dal = dal;
         }
+
+        public bool VoegPartijToe(Partij partij)
+        {
+            return dal.VoegPartijToe(partij);
+        }
+
+        public bool PasPartijAan(Partij partij)
+        {
+            return dal.PasPartijAan(partij); 
+        }
+        public void NieuweUitslag(Uitslag uitslag)
+        {
+            dal.NieuweUitslag(uitslag);
+        }
     }
 }

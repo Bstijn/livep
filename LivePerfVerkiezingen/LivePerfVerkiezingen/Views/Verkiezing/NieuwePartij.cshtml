@@ -1,0 +1,30 @@
+﻿@using modellen
+@model Partij
+
+@{
+    ViewBag.Title = "NieuwePartij";
+}
+
+<h2>Nieuwe partij maken</h2>
+
+<form method="post">
+    <p>
+        <label for="naampartij">Naam Partij</label>
+        <input name="Naam" type="text" value="@Model.Naam" />
+    </p>
+    <p>
+        <label for="lijsttrekker">Lijsttrekker:</label>
+        <input name="Lijsttrekker" type="text" value="@Model.Lijsttrekker" />
+    </p>
+    <p>
+        <label for="submit"></label>
+        <input name="submit" type="submit" value="Bevestig" />
+    </p>
+</form>
+
+@if (TempData["errornieuwepartij"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>partij naam bestaat al</strong>
+    </div>
+}

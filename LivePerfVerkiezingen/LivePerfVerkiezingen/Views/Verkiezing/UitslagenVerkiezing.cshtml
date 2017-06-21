@@ -1,0 +1,18 @@
+﻿@using modellen
+@model List<Uitslag>
+
+@{
+    ViewBag.Title = "UitslagenVerkiezing";
+}
+
+<h2>UitslagenVerkiezing</h2>
+
+@foreach(Uitslag u in Model)
+{
+    <ul>
+        <li>@u.Naam</li>
+        <li>@u.Datum.ToShortDateString()</li>
+        <li>@u.TotaalStemmen</li>
+    </ul>
+}
+<a href=@Url.Action("NieuweUitslag", "Uitslag", new { id = Model[0].verkiezing.Id })>nieuwe uitslag maken</a>

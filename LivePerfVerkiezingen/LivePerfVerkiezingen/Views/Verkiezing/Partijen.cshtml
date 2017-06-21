@@ -1,0 +1,18 @@
+﻿@using modellen
+@model List<Partij>
+
+@{
+    ViewBag.Title = "Partijen";
+}
+
+<h2>Partijen</h2>
+
+@foreach(Partij p in Model)
+{
+    <ul>
+        <li>@p.Naam</li>
+        <li>lijsttrekker = @p.Lijsttrekker</li>
+        <li>@Html.ActionLink("Pas aan","PartijAanpassen",new { id = p.Id })</li>
+    </ul>
+}
+<p>@Html.ActionLink("Nieuwe Partij Toevoegen","NieuwePartij")</p>

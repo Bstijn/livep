@@ -13,6 +13,7 @@ namespace modellen
         public DateTime Datum { get; set; }
         public int TotaalStemmen { get; set; }
         public List<Zetel> Zetels { get; set; } = new List<Zetel>();
+        public Verkiezing verkiezing { get; set; } = new Verkiezing();
         public Meerderheid meerderheid { get; set; } = new Meerderheid();
 
     }
