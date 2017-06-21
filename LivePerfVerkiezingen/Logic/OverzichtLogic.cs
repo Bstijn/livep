@@ -15,5 +15,10 @@ namespace Logic
         {
             this.overzichtdal = overzichtdal;
         }
+
+        public List<Verkiezing> geefAlleVerkiezingen()
+        {
+            return overzichtdal.geefAlleVerkiezingen();
+        }
     }
 }
