@@ -139,6 +139,8 @@
     <Content Include="Views\Verkiezing\NieuwePartij.cshtml" />
     <Content Include="Views\Uitslag\NieuweUitslag.cshtml" />
     <Content Include="Views\Verkiezing\UitslagenVerkiezing.cshtml" />
+    <Content Include="Views\Uitslag\Uitslagvanverkiezing.cshtml" />
+    <Content Include="Views\Uitslag\KanMeerderheid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

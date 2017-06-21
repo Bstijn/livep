@@ -12,6 +12,7 @@ namespace modellen
         public string Naam { get; set; }
         public List<Partij> Partijen { get; set; } = new List<Partij>();
         public List<Uitslag> Uitslagen { get; set; } = new List<Uitslag>();
+        public int totZetels { get; set; }
 
     }
 }

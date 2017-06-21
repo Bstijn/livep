@@ -9,6 +9,11 @@ namespace Dal
 {
     public class ToepassenDalLocal : IToepassenDal
     {
+        public Partij geefPartij(string naam, int id)
+        {
+           return new Partij() { Stemmen = 150 };
+        }
+
         public FileStyleUriParser maakExport(Uitslag uitslag)
         {
             throw new NotImplementedException();
@@ -16,7 +21,7 @@ namespace Dal
 
         public void NieuweUitslag(Uitslag uitslag)
         {
-            throw new NotImplementedException();
+            Console.Write("");
         }
 
         public bool PasPartijAan(Partij partij)

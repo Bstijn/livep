@@ -12,5 +12,6 @@ namespace modellen
         public string Naam { get; set; }
         public string Lijsttrekker { get; set; }
         public int Stemmen { get; set; }
+        public int Zetels { get; set; }
     }
 }

@@ -33,5 +33,10 @@ namespace Dal
         {
             throw new NotImplementedException();
         }
+
+        public List<Partij> UitslagPartijen(string naam)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

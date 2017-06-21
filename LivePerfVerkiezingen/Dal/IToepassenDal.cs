@@ -17,5 +17,6 @@ namespace Dal
         void verwijderPartij(Partij partij);
         FileStyleUriParser maakExport(Uitslag uitslag);
         bool PasPartijAan(Partij partij);
+        Partij geefPartij(string naam,int id);
     }
 }

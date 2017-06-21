@@ -1,0 +1,39 @@
+﻿@using modellen
+@model Uitslag
+
+@{
+    ViewBag.Title = "KanMeerderheid";
+}
+
+@{string lijstrekker = ""; int x = 0; foreach (Partij p in Model.meerderheid.Partijen)
+    {
+        if (p.Zetels > x)
+        {
+            x = p.Zetels;
+            lijstrekker = p.Lijsttrekker;
+        }
+    }
+} 
+
+<h2>is dit een meerderheid</h2>
+<p>aantal zetels wat deze groep moet hebben is @((Model.verkiezing.totZetels / 2) + 1)</p>
+<p>aantal zetels wat deze groep heeft is @Model.meerderheid.Aantalstemmen dus</p>
+@if (TempData["meerderheid"] != null)
+{
+    <p>ja dat kan.</p>
+    <p>wilt u van deze partijen coalitie maken</p>
+}
+else
+{
+    <p>nee dit kan niet dus kan er ook geen coalitie worden gevormd</p>
+}
+<ul>Informatie over de partijen
+    @foreach (Partij p in Model.meerderheid.Partijen)
+    {
+        <li>@p.Naam, @p.Lijsttrekker, aantal zetels @p.Zetels</li>
+    }
+    <li>lijsttrekker wordt: @lijstrekker</li>
+</ul>
+
+
+

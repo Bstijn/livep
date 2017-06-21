@@ -13,17 +13,19 @@ namespace LivePerfVerkiezingen.Controllers
     {
         static OverzichtLogic overzichtlogic = new OverzichtLogic(new OverzichtDalSQL());
         static ToepassenLogic toepassenlogic = new ToepassenLogic(new ToepassenDalSQL());
-        // GET: Verkiezing
+        //weergeeft alle verkiezingen
         public ActionResult Index()
         {
             List<Verkiezing> verkiezingen = overzichtlogic.geefAlleVerkiezingen();
             return View(verkiezingen);
         }
+        //weergeeft alle partijen
         public ActionResult Partijen()
         {
             List<Partij> partijen = overzichtlogic.geefAllePartijen();
             return View(partijen);
         }
+        //laat velden zien die je kan aanpassen van een partij
         [HttpGet]
         public ActionResult PartijAanpassen(int id)
         {
@@ -39,6 +41,7 @@ namespace LivePerfVerkiezingen.Controllers
             }
             return View(partij);
         }
+        //past een partij aan
         [HttpPost]
         public ActionResult PartijAanpassen(Partij partij)
         {
@@ -53,12 +56,14 @@ namespace LivePerfVerkiezingen.Controllers
                 return RedirectToAction("PartijAanpassen",new { id = partij.Id});
             }
         }
+        //laat velden zien die je moet invullen om een nieuwe partij te maken
         [HttpGet]
         public ActionResult NieuwePartij()
         {
             Partij p = new Partij();
             return View(p);
         }
+        //voert de actie uit nieuwe partij maken
         [HttpPost]
         public ActionResult NieuwePartij(Partij partij)
         {
@@ -73,9 +78,14 @@ namespace LivePerfVerkiezingen.Controllers
                 return RedirectToAction("NieuwePartij");
             }
         }
-        public ActionResult UitslagenVerkiezing(int id)
+        //laat alle uitslagen zien van één verkiezing
+        public ActionResult UitslagenVerkiezing(int id, int zetels)
         {
             List<Uitslag> uitslagen = overzichtlogic.UitslagenVan(id);
+            foreach(Uitslag u in uitslagen)
+            {
+                u.verkiezing.totZetels = zetels;
+            }
             return View(uitslagen);
         }
     }

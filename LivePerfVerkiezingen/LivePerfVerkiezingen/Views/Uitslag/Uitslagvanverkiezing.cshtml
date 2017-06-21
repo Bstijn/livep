@@ -1,0 +1,67 @@
+﻿@using modellen
+@model Uitslag
+
+@{
+    ViewBag.Title = "Uitslag";
+}
+
+<script>
+    var i = 1;
+    function verander(naam) {
+        document.getElementById('partij' + i).value = naam;
+        i++;
+    }
+</script>
+
+<h2>Uitslag</h2>
+<ul>
+    <li>@Model.Naam</li>
+    <li>datum: @Model.Datum.ToShortDateString();</li>
+    <li>totaal stemmen: @Model.TotaalStemmen</li>
+    <li>totaaal zetels: @Model.verkiezing.totZetels</li>
+
+</ul>
+@foreach (Partij p in Model.verkiezing.Partijen)
+{
+    <ul>
+        @p.Naam
+        <li>Potentiële lijsttrekker: @p.Lijsttrekker</li>
+        <li>aantal stemmen: @p.Stemmen</li>
+        <li>aantal zetels: @p.Zetels</li>
+        <li><button class="btn-default" onclick="verander('@p.Naam')">zet in meerderheids groep</button></li>
+    </ul>
+}
+<p>
+    type hier onder de partijen die jij wilt hebben als een meerderheid en eventuuel een coalitie maximaal vier partijen
+</p>
+<form method="post">
+    <p hidden>
+        <label for="zetels"></label>
+        <input type="number" value="@Model.verkiezing.totZetels" name="Uitslag.verkiezing.totZetels" />
+    </p>
+    <p hidden>
+        <label for="uitslag_id"></label>
+        <input type="number" value="@Model.Id" name="Uitslag.Id" />
+    </p>
+    <p>
+        <label for="partij1">partij 1 voor meerderheid</label>
+        <input type="text" name="Uitslag.meerderheid.Partijen[0].Naam" id="partij1" readonly />
+    </p>
+    <p>
+        <label for="partij2">partij 2 voor meerderheid</label>
+        <input type="text" name="Uitslag.meerderheid.Partijen[1].Naam" id="partij2" readonly />
+    </p>
+    <p>
+        <label for="partij3">partij 3 voor meerderheid</label>
+        <input type="text" name="Uitslag.meerderheid.Partijen[2].Naam" id="partij3" readonly />
+    </p>
+    <p>
+        <label for="partij4">partij 4 voor meerderheid</label>
+        <input type="text" name="Uitslag.meerderheid.Partijen[3].Naam" id="partij4" readonly/>
+    </p>
+    <p>
+        <label for="submit"></label>
+        <input type="submit" value="bevestig" />
+    </p>
+</form>
+

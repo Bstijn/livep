@@ -13,6 +13,7 @@
         <li>@u.Naam</li>
         <li>@u.Datum.ToShortDateString()</li>
         <li>@u.TotaalStemmen</li>
+        <li><a href=@Url.Action("Uitslagvanverkiezing", "Uitslag",new {naam = u.Naam,stemmen =u.TotaalStemmen,datum = u.Datum,zetels =u.verkiezing.totZetels,id = u.Id })>Details</a></li>
     </ul>
 }
 <a href=@Url.Action("NieuweUitslag", "Uitslag", new { id = Model[0].verkiezing.Id })>nieuwe uitslag maken</a>

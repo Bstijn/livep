@@ -10,7 +10,7 @@ namespace Dal
 {
     public class ToepassenDalSQL : IToepassenDal
     {
-        static SqlConnection conn = new SqlConnection("Server=STIJNCOMPUTER;Database=Politiek;Trusted_Connection=True;");
+        static SqlConnection conn = new SqlConnection("user id=Test;Password=AnneFrank123;Server=192.168.19.2;Database=Politiek;");
         public FileStyleUriParser maakExport(Uitslag uitslag)
         {
             throw new NotImplementedException();
@@ -43,21 +43,22 @@ namespace Dal
                 uitslag_id = reader.GetInt32(0);
             }
             close();
-            foreach(Partij p in uitslag.verkiezing.Partijen)
+            foreach (Partij p in uitslag.verkiezing.Partijen)
             {
                 voegpartijtoeaanuitslag(uitslag_id, p);
             }
-            
-            
+
+
         }
-        private void voegpartijtoeaanuitslag(int uitslag_id,Partij p)
+        private void voegpartijtoeaanuitslag(int uitslag_id, Partij p)
         {
-            string query = "insert into Uitslag_Partij (Partij_id,Uitslag_id,stemmen) values (@partij_id,@uitslag_id,@stemmen)";
-            SqlParameter[] pms = 
+            string query = "insert into Uitslag_Partij (Partij_id,Uitslag_id,stemmen,zetels) values (@partij_id,@uitslag_id,@stemmen,@zetels)";
+            SqlParameter[] pms =
                 {
                     new SqlParameter("@partij_id",p.Id),
                     new SqlParameter("@uitslag_id",uitslag_id),
-                    new SqlParameter("@stemmen",p.Stemmen)
+                    new SqlParameter("@stemmen",p.Stemmen),
+                    new SqlParameter("@zetels",p.Zetels)
                 };
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddRange(pms);
@@ -68,8 +69,8 @@ namespace Dal
 
         public bool PasPartijAan(Partij partij)
         {
-            string query = "update Partij "+
-            "set naam = @naam, lijsttrekker = @lijsttrekker "+
+            string query = "update Partij " +
+            "set naam = @naam, lijsttrekker = @lijsttrekker " +
             "where id = @id";
             SqlParameter[] pms =
             {
@@ -90,7 +91,7 @@ namespace Dal
                 close();
                 return false;
             }
-            close();  
+            close();
             return true;
         }
 
@@ -144,6 +145,33 @@ namespace Dal
         private void open()
         {
             conn.Open();
+        }
+
+        public Partij geefPartij(string naam, int id)
+        {
+            Partij p = new Partij();
+            string query = "select * from Partij p " +
+            "inner join Uitslag_Partij up on p.id = up.Partij_id " +
+            "where naam = @naam and Uitslag_id = @uitslag_id";
+            SqlParameter[] pms =
+            {
+                new SqlParameter("@naam", naam),
+                new SqlParameter("uitslag_id",id)
+            };
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddRange(pms);
+            open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                p.Id = reader.GetInt32(0);
+                p.Naam = reader.GetString(1);
+                p.Lijsttrekker = reader.GetString(2);
+                p.Stemmen = reader.GetInt32(5);
+                p.Zetels = reader.GetInt32(6);
+            }
+            close();
+            return p;
         }
     }
 }

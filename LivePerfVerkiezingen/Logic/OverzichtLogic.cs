@@ -40,5 +40,10 @@ namespace Logic
             }
             return uitslagen;
         }
+        //weergeeft alle partijen met aantal stemmen bij de details van één uitslag
+        public List<Partij> uitslagpartijen(string naam)
+        {
+            return overzichtdal.UitslagPartijen(naam);
+        }
     }
 }
