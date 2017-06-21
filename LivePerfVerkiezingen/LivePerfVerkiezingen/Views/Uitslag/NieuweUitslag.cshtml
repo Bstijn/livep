@@ -25,11 +25,18 @@
     </p>
     
         @for (int i = 0; i < Model.verkiezing.Partijen.Count; i++)
-        {
+        { 
+            <p style="visibility:hidden">
+                <label for="partijid"></label>
+                <input type="number" value="@Model.verkiezing.Partijen[i].Id" name="Uitslag.Verkiezing.Partijen[@i].Id"/>
+            </p>
             <p>
                 <label for="Partij">@Model.verkiezing.Partijen[i].Naam @Model.verkiezing.Partijen[i].Lijsttrekker aantalstemmen:</label>
                 <input type="number" name="Uitslag.Verkiezing.Partijen[@i].Stemmen"/>
             </p>
         }
-    
+    <p>
+        <label for="submit"></label>
+        <input type="submit" value="Bevestig" />
+    </p>
 </form>

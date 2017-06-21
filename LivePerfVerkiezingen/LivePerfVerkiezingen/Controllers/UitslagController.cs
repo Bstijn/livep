@@ -25,7 +25,7 @@ namespace LivePerfVerkiezingen.Controllers
         public ActionResult NieuweUitslag(Uitslag uitslag)
         {
             toepassenlogic.NieuweUitslag(uitslag);
-            return RedirectToAction("");
+            return RedirectToAction("UitslagenVerkiezing","Verkiezing",new { id = uitslag.verkiezing.Id });
         }
     }
 }
